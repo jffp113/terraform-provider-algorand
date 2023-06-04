@@ -2,14 +2,19 @@ module github.com/jffp113/terraform-provider-algorand
 
 go 1.20
 
-require github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.1
+require (
+	github.com/algorand/go-algorand-sdk v1.24.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.1
+)
 
 require (
 	github.com/agext/levenshtein v1.2.2 // indirect
+	github.com/algorand/go-codec/codec v1.1.8 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 // indirect
 	github.com/hashicorp/go-hclog v1.4.0 // indirect
@@ -36,6 +41,7 @@ require (
 	github.com/vmihailenco/msgpack/v4 v4.3.12 // indirect
 	github.com/vmihailenco/tagparser v0.1.1 // indirect
 	github.com/zclconf/go-cty v1.13.1 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
