@@ -22,3 +22,13 @@ resource "algorand_account" "account1" {
 resource "algorand_account" "account2" {
   name = var.account2_name
 }
+
+data "algorand_account" "imported_account1" {
+  name = var.account1_name
+  mnemonic_envvar = "ALGORAND_MNEMONIC"
+}
+
+data "algorand_account" "imported_account2" {
+  name = var.account1_name
+  mnemonic = algorand_account.account2.mnemonic
+}

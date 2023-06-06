@@ -11,6 +11,7 @@ import (
 type Accounter interface {
 	CreateAccount() Credentials
 	FetchAccountInformation(ctx context.Context, addr string) (Account, error)
+	ConvertMnemonicToAddress(m string) (string, error)
 }
 
 type Core struct {
@@ -52,6 +53,21 @@ func (c *Core) FetchAccountInformation(ctx context.Context, addr string) (Accoun
 		Reward:                     acc.Rewards,
 		Status:                     acc.Status,
 	}, nil
+}
+
+func (c *Core) ConvertMnemonicToAddress(m string) (string, error) {
+	priv, err := mnemonic.ToPrivateKey(m)
+	if err != nil {
+		return "", fmt.Errorf("converting mnemonic from private key: %w", err)
+	}
+
+	acc, err := crypto.AccountFromPrivateKey(priv)
+
+	if err != nil {
+		return "", fmt.Errorf("importing account from private key: %w", err)
+	}
+
+	return acc.Address.String(), nil
 }
 
 /**

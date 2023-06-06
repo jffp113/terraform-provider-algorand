@@ -5,6 +5,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/jffp113/terraform-provider-algorand/algorand/account"
+	"github.com/jffp113/terraform-provider-algorand/algorand/asset"
 	"github.com/jffp113/terraform-provider-algorand/algorand/client"
 )
 
@@ -36,9 +37,12 @@ func Provider() *schema.Provider {
 				Description: "The indexer node access token",
 			},
 		},
-		DataSourcesMap: map[string]*schema.Resource{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"algorand_account": account.DataSourceAlgorandAccount(),
+		},
 		ResourcesMap: map[string]*schema.Resource{
 			"algorand_account": account.ResourceAlgorandAccount(),
+			"algorand_asset":   asset.ResourceAlgorandAccount(),
 		},
 	}
 
